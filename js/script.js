@@ -1,40 +1,34 @@
-// Función para cargar componentes
-function loadComponent(id, file) {
-    fetch(file)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById(id).innerHTML = data;
-            // Inicializar funcionalidades después de cargar el componente
-            if (id === 'header-container') {
-                initMenu();
-                updateAuthButton();
-            }
-        })
-    .catch(error => console.error('Error loading component:', error));
-}
+// menu.js - Funcionalidad para el menú flotante
 
-// Estado de autenticación (simulado)
-let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-
-// Actualizar el texto del botón de autenticación
-function updateAuthButton() {
-    const authButton = document.getElementById('authButton');
-    if (authButton) {
-        authButton.textContent = isLoggedIn ? 'Perfil' : 'Iniciar sesión';
-        authButton.href = isLoggedIn ? 'perfil.html' : 'login.html';
+document.addEventListener('DOMContentLoaded', function() {
+    const floatingNavbar = document.getElementById('floatingNavbar');
+    let lastScrollY = window.scrollY;
+    
+    // Controlar la visibilidad del menú basado en el scroll
+    function controlNavbar() {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            // Scroll hacia abajo - ocultar menú
+            floatingNavbar.classList.add('hidden');
+        } else {
+            // Scroll hacia arriba - mostrar menú
+            floatingNavbar.classList.remove('hidden');
+        }
+        lastScrollY = window.scrollY;
     }
-}
-
-// Función para alternar el estado de autenticación
-function toggleAuth() {
-    isLoggedIn = !isLoggedIn;
-    localStorage.setItem('isLoggedIn', isLoggedIn);
-    updateAuthButton();
-}
-
-// Inicializar funcionalidades del menú
-function initMenu() {
-    // Menú responsivo
+    
+    // Configurar el evento de scroll con throttling para mejor rendimiento
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                controlNavbar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Funcionalidad del menú móvil
     const menuToggle = document.getElementById('menuToggle');
     const mainMenu = document.getElementById('mainMenu');
     
@@ -56,42 +50,18 @@ function initMenu() {
         });
     });
     
-    // Cerrar menú al hacer clic fuera de él
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768 && 
-            mainMenu && mainMenu.classList.contains('active') && 
-            !e.target.closest('.nav-container')) {
-            mainMenu.classList.remove('active');
-        }
-    });
-}
-
-// Cargar componentes cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Cargar header y footer
-    loadComponent('header-container', 'components/header.html');
-    loadComponent('footer-container', 'components/footer.html');
+    // Estado de autenticación (simulado)
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const authButton = document.getElementById('authButton');
     
-    // Verificar si estamos en la página de login para manejar la autenticación
-    if (window.location.pathname.endsWith('login.html')) {
-        // Simular proceso de login
-        const loginForm = document.getElementById('loginForm');
-        if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                toggleAuth();
-                window.location.href = 'index.html';
-            });
+    // Actualizar el texto del botón de autenticación
+    function updateAuthButton() {
+        if (authButton) {
+            authButton.textContent = isLoggedIn ? 'Perfil' : 'Iniciar sesión';
+            authButton.href = isLoggedIn ? 'perfil.html' : 'login.html';
         }
     }
     
-    // Manejar logout
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleAuth();
-            window.location.href = 'index.html';
-        });
-    }
+    // Inicializar
+    updateAuthButton();
 });

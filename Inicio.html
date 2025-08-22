@@ -5,11 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/encabezado.css">
+    <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
-    <div id="header-container"></div>
-    <div class="contenido"></div>
+    <div id="header-container">
+        <div class="encabezado-cont">
+        <div class="menu">
+        <nav class="floating-navbar" id="floatingNavbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MiSitioWeb</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu" id="mainMenu">
+                <li><a href="index.html">Inicio</a></li>
+                
+                <li class="has-dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Diseño Web</a></li>
+                        <li><a href="#">Desarrollo</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="agendar.html">Agendar</a></li>
+                <li><a href="about.html">Quiénes somos</a></li>
+                <li><a href="contacto.html">Contáctenos</a></li>
+                <li>
+                    <a href="login.html" class="auth-button" id="authButton">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+        </div>
+    </div>
+    </div>
+    <div class="contenido">
+<div class="carousel-container">
+        <div class="carousel-slide">
+            <div class="slide">
+                <img src="media/carousel1.jpg" alt="Naturaleza y agua">
+                <div class="carousel-caption">
+                    <h2>Te has sentido perdido?</h2>
+                    <p>Si has experimentado ansiedad, estres o depresion y no sabes como puedes llevarlo. Nosotros podemos ayudarte</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="media/carousel2.jpg" alt="Ciudad de noche">
+                <div class="carousel-caption">
+                    <h2>Si no te sientes apoyado</h2>
+                    <p>Si te has sentido solo, abrumado y que necesitas ayuda con tados esas situaciones de estres. Nosotros podemos ayudarte</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="media/carousel3.jpg" alt="Tecnología">
+                <div class="carousel-caption">
+                    <h2>Necesitas ayuda psicologica?</h2>
+                    <p>Podemos darte esa ayuda que necesitas con nuestro profesionales totalmente capacitados</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="media/carousel4.jpg" alt="Viajes">
+                <div class="carousel-caption">
+                    <h2>Has sentido que algun familiar necesita apoyo</h2>
+                    <p>Nostros podemos ser esa primera linea de comunicacion para apoyar a las personas que tanto amas</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-control prev">&#10094;</button>
+        <button class="carousel-control next">&#10095;</button>
+        
+        <div class="carousel-indicators">
+            <div class="carousel-indicator active" data-index="0"></div>
+            <div class="carousel-indicator" data-index="1"></div>
+            <div class="carousel-indicator" data-index="2"></div>
+            <div class="carousel-indicator" data-index="3"></div>
+        </div>
+    </div>
+    </div>
     <div id="footer-container"></div>
-    <script src="js/script.js"></script>
+    <script src="js/carrusel.js"></script>
 </body>
 </html>
