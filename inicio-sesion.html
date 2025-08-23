@@ -4,8 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/iniciosesion.css">
+    <link rel="stylesheet" href="css/encabezado.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+    <div class="login-container">
+        <div class="login-content">
+            <!-- Primer div: Logo -->
+            <div class="logo">
+                <img style="width: 100px;" src="media/Iconoweb.png" alt="">
+            </div>
+            
+            <!-- Segundo div: Nombre de la página -->
+            <div class="app-name">
+                <h1>PSIFAMILIA</h1>
+                <p>Ingresa a tu cuenta para continuar</p>
+            </div>
+            
+            <!-- Tercer div: Espacio para los inputs -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Usuario o correo electrónico">
+            </div>
+            
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Contraseña">
+            </div>
+            
+            <!-- Cuarto div: Olvidar contraseña -->
+            <div class="forgot-password">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            
+            <!-- Quinto div: Botón -->
+            <button class="login-button">Iniciar Sesión</button>
+            
+            <!-- Separador -->
+            <div class="separator">
+                <span>O continúa con</span>
+            </div>
+            
+            <!-- Botones de redes sociales -->
+            <div class="social-login">
+                <div class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            
+            <!-- Enlace para registrarse -->
+            <div class="signup-link">
+                ¿No tienes una cuenta? <a href="#">Regístrate ahora</a>
+            </div>
+        </div>
+    </div>
     
+    <script src="js/iniciosesion.js"></script>
 </body>
 </html>
